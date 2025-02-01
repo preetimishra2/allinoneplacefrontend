@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie"; // Add this import
+import Cookies from "js-cookie"; // Import for managing cookies
 import "./ProductDetails.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
 import { Carousel } from "react-responsive-carousel"; // Carousel library
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
 import { API_BASE_URL } from "../../config";
 
 const ProductDetails = () => {
@@ -14,11 +15,13 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
+  // Redirect to login if not authenticated
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (!token) navigate("/login");
   }, [navigate]);
 
+  // Fetch product details
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/api/products/${id}`)
@@ -53,14 +56,17 @@ const ProductDetails = () => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <Header />
       <div className="product-details-container">
         <div className="product-image-container">
           <Carousel autoPlay infiniteLoop showThumbs={false}>
-            {product.images.map((image, index) => (
+            {product.images?.map((image, index) => (
               <div key={index}>
-                <img src={image} alt="" />
+                <img 
+                  src={`https://allinoneplacebackend.onrender.com/uploads/${image}`} 
+                  alt={product.name} 
+                />
               </div>
             ))}
           </Carousel>
@@ -81,7 +87,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <Footer />
-    </React.Fragment>
+    </>
   );
 };
 

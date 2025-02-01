@@ -15,6 +15,7 @@ const EditProduct = () => {
     category: "",
     stock: 0,
   });
+
   useEffect(() => {
     // Use the admin route to fetch the product
     axios
@@ -24,7 +25,7 @@ const EditProduct = () => {
           name: response.data.name,
           description: response.data.description,
           price: response.data.price,
-          images: response.data.images, // Assuming images are an array
+          images: response.data.images.map(img => `https://allinoneplacebackend.onrender.com/uploads/${img}`), // Ensure correct image path
           category: response.data.category,
           stock: response.data.stock,
         });
@@ -34,8 +35,6 @@ const EditProduct = () => {
         alert("Product not found!");
       });
   }, [id]);
-  
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,12 +86,11 @@ const EditProduct = () => {
       </label>
       <label>
         Image URLs:
-        <input
-          type="text"
-          name="images"
-          value={formData.images.join(", ")} // Join multiple images
-          readOnly
-        />
+        <div className="image-preview-container">
+          {formData.images.map((image, index) => (
+            <img key={index} src={image} alt={`Product ${index + 1}`} className="image-preview" />
+          ))}
+        </div>
       </label>
       <label>
         Category:
