@@ -27,7 +27,7 @@ const Checkout = () => {
       }
 
       try {
-        await axios.get("/api/users/profile", {
+        const response = await axios.get("/api/users/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(response.data);
