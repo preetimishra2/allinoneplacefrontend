@@ -60,7 +60,7 @@ const ProductDetails = () => {
           <Carousel autoPlay infiniteLoop showThumbs={false}>
             {product.images.map((image, index) => (
               <div key={index}>
-                <img src={image} alt={`Product Image ${index + 1}`} />
+                <img src={image} alt={`Image ${index + 1}`} />
               </div>
             ))}
           </Carousel>
@@ -70,9 +70,13 @@ const ProductDetails = () => {
           <p className="product-price">₹{product.price}</p>
           <p className="product-description">{product.description}</p>
           <div className="quantity-control">
-            <button onClick={handleDecrease} className="quantity-btn">-</button>
+            <button onClick={handleDecrease} className="quantity-btn">
+              -
+            </button>
             <span className="quantity-display">{quantity}</span>
-            <button onClick={handleIncrease} className="quantity-btn">+</button>
+            <button onClick={handleIncrease} className="quantity-btn">
+              +
+            </button>
           </div>
           <button onClick={addToCart} className="add-to-cart-btn">
             Add To Cart

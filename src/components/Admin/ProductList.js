@@ -1,7 +1,7 @@
 // Admin/ProductList.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./ProductList.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
