@@ -4,7 +4,7 @@ import "./AddProduct.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
-import { API_BASE_URL } from "../../config"; 
+import { API_BASE_URL } from "../../config";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -112,9 +112,7 @@ const AddProduct = () => {
               required
             >
               <option value="">Select a category</option>
-              <option value="Vegetables and fruits">
-                Vegetables and Fruits
-              </option>
+              <option value="Vegetables and fruits">Vegetables and Fruits</option>
               <option value="Grocery">Grocery</option>
               <option value="Clothing">Clothing</option>
             </select>

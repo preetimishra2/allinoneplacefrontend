@@ -4,10 +4,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./ProductDetails.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
-import Cookies from "js-cookie";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import Carousel CSS
 import { Carousel } from "react-responsive-carousel"; // Carousel library
-import { API_BASE_URL } from "../../config"; 
+import { API_BASE_URL } from "../../config";
+
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -60,7 +59,7 @@ const ProductDetails = () => {
           <Carousel autoPlay infiniteLoop showThumbs={false}>
             {product.images.map((image, index) => (
               <div key={index}>
-                <img src={image} alt=""/>
+                <img src={image} alt={`Product Image ${index + 1}`} />
               </div>
             ))}
           </Carousel>
@@ -70,17 +69,11 @@ const ProductDetails = () => {
           <p className="product-price">₹{product.price}</p>
           <p className="product-description">{product.description}</p>
           <div className="quantity-control">
-            <button onClick={handleDecrease} className="quantity-btn">
-              -
-            </button>
+            <button onClick={handleDecrease} className="quantity-btn">-</button>
             <span className="quantity-display">{quantity}</span>
-            <button onClick={handleIncrease} className="quantity-btn">
-              +
-            </button>
+            <button onClick={handleIncrease} className="quantity-btn">+</button>
           </div>
-          <button onClick={addToCart} className="add-to-cart-btn">
-            Add To Cart
-          </button>
+          <button onClick={addToCart} className="add-to-cart-btn">Add To Cart</button>
           <button className="back-btn" onClick={() => navigate("/")}>
             Back to Products
           </button>
