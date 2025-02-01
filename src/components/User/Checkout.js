@@ -80,7 +80,7 @@ const Checkout = () => {
     }
 
     try {
-      const response = await axios.post(
+       await axios.post(
         "/api/orders/checkout",
         {
           products: [], // Replace with actual products
