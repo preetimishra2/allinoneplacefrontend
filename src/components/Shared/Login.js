@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import { API_BASE_URL } from "../../config"; 
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -17,7 +18,7 @@ const Login = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post("/api/users/login", formData);
+      const response = await axios.post(`${API_BASE_URL}/api/users/login`, formData);
   
       // Extract token and user info from the response
       console.log(response.data)

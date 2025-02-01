@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EditProduct.css";
+import { API_BASE_URL } from "../../config"; 
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const EditProduct = () => {
   useEffect(() => {
     // Use the admin route to fetch the product
     axios
-      .get(`/api/admin/products/${id}`)
+      .get(`${API_BASE_URL}/api/admin/products/${id}`)
       .then((response) => {
         setFormData({
           name: response.data.name,
@@ -44,7 +45,7 @@ const EditProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`/api/admin/products/${id}`, formData)
+      .put(`${API_BASE_URL}/api/admin/products/${id}`, formData)
       .then(() => {
         alert("Product updated successfully");
         navigate("/admin/products");

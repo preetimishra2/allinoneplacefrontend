@@ -7,7 +7,7 @@ import Footer from "../Shared/Footer";
 import Cookies from "js-cookie";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import Carousel CSS
 import { Carousel } from "react-responsive-carousel"; // Carousel library
-
+import { API_BASE_URL } from "../../config"; 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -21,7 +21,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/products/${id}`)
+      .get(`${API_BASE_URL}/api/products/${id}`)
       .then((response) => setProduct(response.data))
       .catch((error) => console.error(error));
   }, [id]);

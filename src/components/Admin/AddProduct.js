@@ -4,7 +4,7 @@ import "./AddProduct.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
-import { API_BASE_URL } from "../../config"; // Corrected path
+import { API_BASE_URL } from "../../config"; 
 
 const AddProduct = () => {
   const navigate = useNavigate();

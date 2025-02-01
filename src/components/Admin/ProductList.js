@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./ProductList.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
+import { API_BASE_URL } from "../../config"; 
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const ProductList = () => {
 
   useEffect(() => {
     axios
-      .get("/api/admin/products")
+      .get(`${API_BASE_URL}/api/admin/products`)
       .then((response) => setProducts(response.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
@@ -20,7 +21,7 @@ const ProductList = () => {
   const deleteProduct = (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       axios
-        .delete(`/api/admin/products/${id}`)
+        .delete(`${API_BASE_URL}/api/admin/products/${id}`)
         .then(() =>
           setProducts(products.filter((product) => product._id !== id))
         )

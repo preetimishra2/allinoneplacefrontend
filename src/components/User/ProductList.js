@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ProductList.css'; // Import the CSS file
 import { useNavigate } from "react-router-dom";
-
+import { API_BASE_URL } from "../../config"; 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState("");
@@ -10,7 +10,7 @@ const ProductList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('/api/products')
+        axios.get(`${API_BASE_URL}/api/products`)
             .then(response => {
                 setProducts(response.data);
                 setLoading(false); // Stop loading

@@ -1,4 +1,3 @@
-// pages/HomePage.js
 import React from 'react';
 import ProductList from '../components/User/ProductList';
 import Header from '../components/Shared/Header.js';

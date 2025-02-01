@@ -3,6 +3,7 @@ import "./Checkout.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
 import axios from "axios";
+import { API_BASE_URL } from "../../config"; 
 
 const Checkout = () => {
   const [user, setUser] = useState(null);
@@ -27,7 +28,7 @@ const Checkout = () => {
       }
 
       try {
-        const response = await axios.get("/api/users/profile", {
+        const response = await axios.get(`${API_BASE_URL}/api/users/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(response.data);
@@ -51,7 +52,7 @@ const Checkout = () => {
     setLoading(true);
     const token = localStorage.getItem("authToken");
     try {
-      const response = await axios.post("/api/users/add-address", newAddress, {
+      const response = await axios.post(`${API_BASE_URL}/api/users/add-address`, newAddress, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Address added successfully!");
@@ -81,7 +82,7 @@ const Checkout = () => {
 
     try {
        await axios.post(
-        "/api/orders/checkout",
+        `${API_BASE_URL}/api/orders/checkout`,
         {
           products: [], // Replace with actual products
           totalPrice: 100, // Replace with the actual total price

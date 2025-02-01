@@ -3,6 +3,7 @@ import "./UserDashboard.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
 import axios from "axios";
+import { API_BASE_URL } from "../../config"; 
 
 const UserDashboard = () => {
   const [user, setUser] = useState(null);
@@ -12,21 +13,20 @@ const UserDashboard = () => {
     const fetchData = async () => {
       const token = localStorage.getItem("authToken");
       try {
-        const userResponse = await axios.get("/api/users/profile", {
+        const userResponse = await axios.get(`${API_BASE_URL}/api/users/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(userResponse.data);
 
-        const ordersResponse = await axios.get("/api/orders", {
+        const ordersResponse = await axios.get(`${API_BASE_URL}/api/orders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        // Ensure orders are correctly accessed from the response
         if (Array.isArray(ordersResponse.data.orders)) {
-          setOrders(ordersResponse.data.orders); // Set orders properly
+          setOrders(ordersResponse.data.orders);
         } else {
           console.error("Orders response is not an array:", ordersResponse.data);
-          setOrders([]); // Default to empty array if not an array
+          setOrders([]); 
         }
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
