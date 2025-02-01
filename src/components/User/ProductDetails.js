@@ -60,7 +60,7 @@ const ProductDetails = () => {
           <Carousel autoPlay infiniteLoop showThumbs={false}>
             {product.images.map((image, index) => (
               <div key={index}>
-                <img src={image} alt={`Product Image ${index + 1}`} />
+                <img src={image} alt="" />
               </div>
             ))}
           </Carousel>
