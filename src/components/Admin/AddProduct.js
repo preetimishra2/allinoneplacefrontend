@@ -4,7 +4,8 @@ import "./AddProduct.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../../config"; // Corrected path
+
 const AddProduct = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -26,15 +27,14 @@ const AddProduct = () => {
     const uploadedImages = [];
 
     for (let file of files) {
-      const formData = new FormData();
-      formData.append("image", file);
+      const imageFormData = new FormData();
+      imageFormData.append("image", file);
 
       try {
         setLoading(true);
-
         const { data } = await axios.post(
-          `${API_BASE_URL}/api/admin/products`,
-          formData,
+          `${API_BASE_URL}/api/admin/upload`,
+          imageFormData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
         uploadedImages.push(data.url);
@@ -50,7 +50,7 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/admin/products", formData);
+      await axios.post(`${API_BASE_URL}/api/admin/products`, formData);
       setFormData({
         name: "",
         description: "",
