@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"; // Add this import
 import "./ProductDetails.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
