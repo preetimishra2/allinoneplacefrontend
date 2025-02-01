@@ -33,7 +33,7 @@ const Login = () => {
       if (isAdmin) {
         navigate("/admin"); // Redirect to admin page
       } else {
-        navigate("/allinoneplace"); // Redirect to the regular user page
+        navigate("/"); // Redirect to the regular user page
       }
     } catch (error) {
       console.error("Error during login:", error);

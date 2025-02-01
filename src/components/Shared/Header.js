@@ -34,7 +34,7 @@ const Header = () => {
     return (
         <nav className="header-container">
             <div className="logo">
-                <Link to={isAdmin ? "/admin" : "/allinoneplace"} className="logo-text">
+                <Link to={isAdmin ? "/admin" : "/"} className="logo-text">
                     ALLINONEPLACE
                 </Link>
             </div>
