@@ -1,0 +1,158 @@
+/* General Header Styling */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #222;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Logo Styling */
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f0a500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo-text:hover {
+    color: #fff;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* Link Buttons */
+.nav-links a,
+.logout-button,
+.profile-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a,
+.profile-button {
+    background-color: #444;
+}
+
+.nav-links a:hover {
+    background-color: #f0a500;
+    color: #222;
+}
+
+.logout-button {
+    background-color: #e63946; /* Red for logout */
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+        text-align: left;
+    }
+
+    .logo-text {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 20px;
+        display: none;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a,
+    .logout-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+
+    .profile-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger .bar.open {
+        background-color: #f0a500;
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+    }
+
+    .hamburger .bar.open:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger .bar.open:nth-child(3) {
+        transform: rotate(-45deg);
+        transition: all 0.3s ease;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .nav-links a,
+    .logout-button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

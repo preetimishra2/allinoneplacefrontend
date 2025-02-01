@@ -1,0 +1,77 @@
+/* Main Banner Carousel Container */
+.banner-carousel {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust as per your design */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel Images Wrapper */
+.banner-carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+/* Individual Image Styling */
+.banner-carousel-image {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images maintain aspect ratio */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Navigation Buttons */
+.banner-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.banner-carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Left Button Position */
+.banner-btn-left {
+    left: 15px;
+}
+
+/* Right Button Position */
+.banner-btn-right {
+    right: 15px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .banner-carousel {
+        height: 300px; /* Reduce height for smaller screens */
+    }
+
+    .banner-carousel-btn {
+        font-size: 24px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-carousel {
+        height: 200px;
+    }
+
+    .banner-carousel-btn {
+        font-size: 20px;
+        padding: 6px;
+    }
+}
