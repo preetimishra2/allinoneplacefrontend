@@ -25,7 +25,7 @@ const EditProduct = () => {
           name: response.data.name,
           description: response.data.description,
           price: response.data.price,
-          images: response.data.images.map(img => `https://allinoneplacebackend.onrender.com/uploads/${img}`), // Ensure correct image path
+          images: response.data.images.map(img => `https://allinoneplacebackend.onrender.com${img}`), // Ensure correct image path
           category: response.data.category,
           stock: response.data.stock,
         });

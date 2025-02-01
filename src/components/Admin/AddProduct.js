@@ -38,7 +38,7 @@ const AddProduct = () => {
           { headers: { "Content-Type": "multipart/form-data" } }
         );
         // Ensure correct image path by adding the uploads directory prefix
-        uploadedImages.push(`https://allinoneplacebackend.onrender.com/uploads/${data.url}`);
+        uploadedImages.push(`https://allinoneplacebackend.onrender.com${data.url}`);
       } catch (error) {
         console.error("Image upload failed", error);
       }
