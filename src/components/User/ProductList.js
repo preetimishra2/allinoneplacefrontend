@@ -39,7 +39,7 @@ const ProductList = () => {
     return (
       <div className="loading-screen">
         <div className="loading-spinner"></div>
-        <p className="loading-text">Fetching Products... Please Wait</p>
+        <p className="loading-text">Test versions are usually slow, just a few more moments! Please wait.</p>
       </div>
     );
   }
@@ -57,7 +57,7 @@ const ProductList = () => {
       <div className="product-grid">
         {filteredProducts.length > 0 ? filteredProducts.map(product => (
           <div key={product._id} className="product-card">
-            <img src={product.images[0]} alt={product.name} className="product-image" />
+            <img src={`https://allinoneplacebackend.onrender.com/uploads/${product.images[0]}`} alt={product.name} className="product-image" />
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">₹{product.price}</p>
