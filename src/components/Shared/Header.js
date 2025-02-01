@@ -23,7 +23,6 @@ const Header = () => {
         setIsLoggedIn(false);
         setIsAdmin(false);
         setUserId(null);
-        alert('You have successfully logged out.');
         navigate('/login');
     };
 

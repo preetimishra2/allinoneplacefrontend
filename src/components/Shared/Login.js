@@ -77,6 +77,15 @@ const Login = () => {
               Register here
             </Link>
           </p>
+          <p className="registration-option">
+            If you want you can register. Or else try these credentials for trail:
+          </p>
+          <p className="registration-option">
+            Admin credentials : admin@gmail.com pwd:Admin1234@
+          </p>
+          <p className="registration-option">
+            User credentials : test@gmail.com pwd:Test1234@
+          </p>
         </form>
       </div>
     </React.Fragment>
