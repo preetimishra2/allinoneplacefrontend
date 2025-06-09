@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./ProductList.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../../config";
+import AppContext from "../../ContextProvider";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
+  const { searchProduct } = useContext(AppContext)
   const [loading, setLoading] = useState(true); // Loading state
   const navigate = useNavigate();
 
@@ -22,12 +24,12 @@ const ProductList = () => {
       });
   }, []);
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  // };
 
   const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(search.toLowerCase())
+    product.name.toLowerCase().includes(searchProduct.toLowerCase())
   );
 
   const showProductDetails = (productId) => {
@@ -46,18 +48,19 @@ const ProductList = () => {
 
   return (
     <div className="product-list-container">
-      <input
+      {/* <input
         type="text"
         className="search-input"
         placeholder="Search products..."
         value={search}
         onChange={handleSearch}
-      />
+      /> */}
 
       <div className="product-grid">
         {filteredProducts.length > 0 ? filteredProducts.map(product => (
           <div key={product._id} className="product-card">
-            <img src={`https://allinoneplacebackend.onrender.com${product.images[0]}`} alt={product.name} className="product-image" />
+            {/* <img src={`https://allinoneplacebackend.onrender.com${product.images[0]}`} alt={product.name} className="product-image" /> */}
+            <img src={`${product.images[0]}`} alt={product.name} className="product-image" />
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">₹{product.price}</p>

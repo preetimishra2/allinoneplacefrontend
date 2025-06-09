@@ -44,7 +44,7 @@
 .login-button {
     width: 100%;
     padding: 10px 15px;
-    background-color: #4caf50;
+    background-color: #006AC6;
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
@@ -53,9 +53,17 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+.special-login-button {
+    display: inline;
+    width: 40%;
+    background-color: #99CFFF;
 
+}
 .login-button:hover {
-    background-color: #45a049;
+    background-color: #99CFFF;
+}
+.special-login-button:hover {
+    background-color: #006AC6;
 }
 
 /* Registration Option */
@@ -67,12 +75,12 @@
 }
 
 .register-link {
-    color: #4caf50;
+    color: #006AC6;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .register-link:hover {
-    color: #45a049;
+    color: #99CFFF;
 }
