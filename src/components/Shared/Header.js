@@ -22,7 +22,7 @@ const Header = () => {
         setIsLoggedIn(!!token);
         setIsAdmin(adminStatus);
         setUserId(storedUserId);
-        setSearchInput(searchProduct)
+        // setSearchInput(searchProduct)
 
     }, []);
     // useEffect(() => {
