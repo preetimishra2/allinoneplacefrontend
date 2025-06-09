@@ -64,7 +64,7 @@ const ProductDetails = () => {
             {product.images?.map((image, index) => (
               <div key={index}>
                 <img 
-                  src={`https://allinoneplacebackend.onrender.com${image}`} 
+                  src={`${image}`} 
                   alt={product.name} 
                 />
               </div>
