@@ -11,38 +11,35 @@ const Login = () => {
   const [submitted, setSubmitted] = useState(false)
   const navigate = useNavigate();
 
-  useEffect(()=>{
-
+  useEffect(() => {
+    if (!submitted) {
+      return;
+    }
     const loginUser = async () => {
       try {
-      const response = await axios.post(`${API_BASE_URL}/api/users/login`, formData);
-  
-      // Extract token and user info from the response
-      console.log(response.data)
-      const { token, isAdmin } = response.data;
-  
-      // Store the token and isAdmin status in localStorage
-      localStorage.setItem("authToken", token);
-      localStorage.setItem("isAdmin", isAdmin); // Add this line to store admin status
-      localStorage.setItem('_id', response.data.id);
-  
-      // Redirect based on user role
-      if (isAdmin) {
-        navigate("/admin"); // Redirect to admin page
-      } else {
-        navigate("/"); // Redirect to the regular user page
+        const response = await axios.post(`${API_BASE_URL}/api/users/login`, formData);
+        // Extract token and user info from the response
+        console.log(response.data)
+        const { token, isAdmin } = response.data;
+        // Store the token and isAdmin status in localStorage
+        localStorage.setItem("authToken", token);
+        localStorage.setItem("isAdmin", isAdmin); // Add this line to store admin status
+        localStorage.setItem('_id', response.data.id);
+        // Redirect based on user role
+        if (isAdmin) {
+          navigate("/admin"); // Redirect to admin page
+        } else {
+          navigate("/"); // Redirect to the regular user page
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        setError(error.response?.data?.message || "Invalid email or password.");
       }
-    } catch (error) {
-      console.error("Error during login:", error);
-      setError(error.response?.data?.message || "Invalid email or password.");
+      setSubmitted(false)
     }
-    }
+    loginUser()
 
-
-    if (submitted) {
-      loginUser()
-    }
-  },[submitted])
+  }, [submitted, navigate, formData])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

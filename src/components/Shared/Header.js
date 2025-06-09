@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import AppContext from '../../ContextProvider';
-import { FaRegUserCircle, FaShoppingCart, FaSearch } from "react-icons/fa";
+import { FaRegUserCircle, FaShoppingCart } from "react-icons/fa";
 import logo from '../../assets/IMG_3955.PNG';
 import logoMobile from '../../assets/logoMobile.png';
 import { Link, useNavigate } from 'react-router-dom';
@@ -25,13 +25,17 @@ const Header = () => {
         setSearchInput(searchProduct)
 
     }, []);
+    // useEffect(() => {
+    //     setSearchInput(searchProduct)
+    // }, [searchProduct]);
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setSearchProduct(searchInput)
         }, 300);
         return () => clearTimeout(timer);
-    }, [searchInput])
+    }, [searchInput, setSearchProduct])
 
     const handleLogout = () => {
         localStorage.clear();
@@ -40,10 +44,6 @@ const Header = () => {
         setUserId(null);
         navigate('/login');
     };
-
-    const searchProductHandler = event => {
-        console.log(event.target.value)
-    }
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -54,22 +54,22 @@ const Header = () => {
             <div className="logo">
                 <Link to={isAdmin ? "/admin" : "/"} className="logo-text">
                     {isMobile ? (
-                        <img className='header-logo' src={logoMobile} />) : (
-                        <img className='header-logo' src={logo} />)
+                        <img className='header-logo' src={logoMobile} alt='logo-mobile' />) : (
+                        <img className='header-logo' src={logo} alt='logo'/>)
                     }
                 </Link>
             </div>
             {/* <div
                 className={isMenuOpen ? 'search-div-hidden' : 'search-div'}
             > */}
-                <input
-                    type="text"
-                    className={isMenuOpen ? 'search-input-hidden' : 'search-input'}
-                    placeholder="Search products..."
-                    value={searchInput}
-                    onChange={e => setSearchInput(e.target.value)}
-                />
-                {/* <FaSearch />
+            <input
+                type="text"
+                className={isMenuOpen ? 'search-input-hidden' : 'search-input'}
+                placeholder="Search products..."
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+            />
+            {/* <FaSearch />
             </div> */}
 
             {/* Hamburger Icon */}
@@ -112,7 +112,7 @@ const Header = () => {
                         <Link to="/login" className="button-link" >
                             {isMenuOpen ? (
                                 <React.Fragment>
-                                     Login
+                                    Login
                                 </React.Fragment>
                             ) : (
                                 <React.Fragment>
