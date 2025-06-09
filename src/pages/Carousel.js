@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Carousel.css';
-import banner1 from '../bannerimages/banner1.jpg';
-import banner2 from '../bannerimages/banner2.jpg';
+import banner1 from '../assets/bannerimages/banner1.jpg';
+import banner2 from '../assets/bannerimages/banner2.jpg';
 
 const Carousel = () => {
-    const images = [banner2, banner1];
+    const images = [banner1, banner2];
     const [currentIndex, setCurrentIndex] = useState(0);
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) =>
+                prevIndex === images.length - 1 ? 0 : prevIndex + 1
+            );
+        }, 3000); // Change slide every 3 seconds
+
+        return () => clearInterval(interval); // Cleanup
+    }, [images.length]);
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);

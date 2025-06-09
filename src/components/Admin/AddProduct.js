@@ -39,6 +39,8 @@ const AddProduct = () => {
         );
         // Ensure correct image path by adding the uploads directory prefix
         uploadedImages.push(`https://allinoneplacebackend.onrender.com${data.url}`);
+        console.log("Naveen data: ", data)
+        // uploadedImages.push(`${data.url}`);
       } catch (error) {
         console.error("Image upload failed", error);
       }
