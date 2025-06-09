@@ -39,7 +39,7 @@ const ProductList = () => {
     return (
       <div className="loading-screen">
         <div className="loading-spinner"></div>
-        <p className="loading-text">Test versions are usually slow, just a few more moments! Please wait.</p>
+        <p className="loading-text">Test versions are usually slow: just a few more moments! Please wait.</p>
       </div>
     );
   }
