@@ -13,7 +13,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // state for menu toggle
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("")
-    const { searchProduct, setSearchProduct, isMobile } = useContext(AppContext)
+    const { setSearchProduct, isMobile } = useContext(AppContext)
 
     useEffect(() => {
         const token = localStorage.getItem('authToken');
