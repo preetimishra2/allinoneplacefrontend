@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
 import { API_BASE_URL } from "../../config";
+import { PRODUCT_CATEGORIES } from "../../CONSTANTS/Categories";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -114,8 +115,13 @@ const AddProduct = () => {
               onChange={handleChange}
               required
             >
-              <option value="">Select a category</option>
-              <option value="Vegetables and fruits">Vegetables and Fruits</option>
+              <option value="" disabled hidden>Select a category</option>
+              {PRODUCT_CATEGORIES.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+              {/* <option value="Vegetables and fruits">Vegetables and Fruits</option>
               <option value="Fashion">Fashion</option>
               <option value="Dairy Products">Dairy Products</option>
               <option value="Beauty and Personal Hygine">Beauty and Personal Hygine</option>
@@ -124,7 +130,7 @@ const AddProduct = () => {
               <option value="Snacks and Drinks">Snacks and Drinks</option>
               <option value="Toys">Toys</option>
               <option value="Grocery and Kitchen">Grocery and Kitchen</option>
-              <option value="Seasonal Items">Seasonal Items</option>
+              <option value="Seasonal Items">Seasonal Items</option> */}
             </select>
           </div>
           <div className="form-group">

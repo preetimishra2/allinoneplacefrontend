@@ -58,10 +58,10 @@ const ProductList = () => {
 
       <div className="product-grid">
         {filteredProducts.length > 0 ? filteredProducts.map(product => (
-          <div key={product._id} className="product-card">
+          <div key={product._id} className="product-card" onClick={() => showProductDetails(product._id)}>
             <img src={`https://allinoneplacebackend.onrender.com${product.images[0]}`} alt={product.name} className="product-image" />
             {/* <img src={`${product.images[0]}`} alt={product.name} className="product-image" /> */}
-            <div className="product-info">
+            <div className="product-info" >
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">₹{product.price}</p>
               <button 
