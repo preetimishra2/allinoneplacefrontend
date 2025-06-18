@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import "./ProductList.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../../config";
 import AppContext from "../../ContextProvider";
 
 const ProductList = () => {
@@ -16,7 +14,7 @@ const ProductList = () => {
     setProducts(CurrentlyShowingProducts)
     setLoading(false)
     
-  }, []);
+  }, [CurrentlyShowingProducts]);
   
   useEffect(()=> {
     // setLoading(true)

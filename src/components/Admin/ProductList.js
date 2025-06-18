@@ -9,7 +9,6 @@ import { API_BASE_URL } from "../../config";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  // const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
   const navigate = useNavigate();
 
   useEffect(() => {

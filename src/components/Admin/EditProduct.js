@@ -52,7 +52,7 @@ const EditProduct = () => {
         toast.error("Product not found!");
       })
     }
-    const val = IIFE()
+    IIFE()
 
   }, [id]);
 

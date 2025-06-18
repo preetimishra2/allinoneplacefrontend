@@ -22,13 +22,8 @@ const Header = () => {
         setIsLoggedIn(!!token);
         setIsAdmin(adminStatus);
         setUserId(storedUserId);
-        // setSearchInput(searchProduct)
 
     }, []);
-    // useEffect(() => {
-    //     setSearchInput(searchProduct)
-    // }, [searchProduct]);
-
 
     useEffect(() => {
         let timer;
@@ -44,7 +39,7 @@ const Header = () => {
         }
 
         return () => clearTimeout(timer);
-    }, [searchInput])
+    }, [searchInput, listOfAllProducts, setCurrentlyShowingProducts])
 
     const handleLogout = () => {
         localStorage.clear();
