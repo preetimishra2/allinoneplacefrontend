@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
 import { API_BASE_URL } from "../../config";
-import { PRODUCT_CATEGORIES } from "../../CONSTANTS/Categories";
+import { CAT2, PRODUCT_CATEGORIES } from "../../CONSTANTS/Categories";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const AddProduct = () => {
     price: "",
     images: [],
     category: "",
+    subcategory:"",
     stock: "",
   });
   const [loading, setLoading] = useState(false);
@@ -75,9 +76,15 @@ const AddProduct = () => {
       <div className="add-product-container">
         <form onSubmit={handleSubmit} className="add-product-form">
           <h2>Add New Product</h2>
+
+
+
+
+
+
           <div className="form-group">
             <label>Product Name</label>
-            <input
+            <input className='no-spinner'
               type="text"
               name="name"
               value={formData.name}
@@ -86,6 +93,13 @@ const AddProduct = () => {
               placeholder="Enter product name"
             />
           </div>
+
+
+
+
+
+
+
           <div className="form-group">
             <label>Description</label>
             <textarea
@@ -96,9 +110,16 @@ const AddProduct = () => {
               placeholder="Enter product description"
             />
           </div>
+
+
+
+
+
+
+
           <div className="form-group">
             <label>Price (₹)</label>
-            <input
+            <input className='no-spinner'
               type="number"
               name="price"
               value={formData.price}
@@ -107,6 +128,13 @@ const AddProduct = () => {
               placeholder="Enter product price"
             />
           </div>
+
+
+
+
+
+
+
           <div className="form-group">
             <label>Category</label>
             <select
@@ -121,21 +149,40 @@ const AddProduct = () => {
                   {category}
                 </option>
               ))}
-              {/* <option value="Vegetables and fruits">Vegetables and Fruits</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Dairy Products">Dairy Products</option>
-              <option value="Beauty and Personal Hygine">Beauty and Personal Hygine</option>
-              <option value="Sweets and Chocolates">Sweets and Chocolates</option>
-              <option value="Household Essentials">Household Essentials</option>
-              <option value="Snacks and Drinks">Snacks and Drinks</option>
-              <option value="Toys">Toys</option>
-              <option value="Grocery and Kitchen">Grocery and Kitchen</option>
-              <option value="Seasonal Items">Seasonal Items</option> */}
             </select>
           </div>
+
+
+            {formData.category && (<div className="form-group">
+            <label>Sub Category</label>
+            <select
+              name="subcategory"
+              value={formData.subcategory}
+              onChange={handleChange}
+              
+            >
+              <option value="" disabled hidden>Select a category</option>
+              {formData.category &&
+                // console.log(CAT2.filter(obj => obj.title === formData.category)[0]) &&
+              CAT2.filter(obj => obj.title === formData.category)[0].subcategories
+              .map((subcategory) => (
+                <option key={subcategory.title} value={subcategory.title}>
+                  {subcategory.title}
+                </option>
+              )
+              )}
+            </select>
+          </div>)}
+
+
+
+
+
+
+
           <div className="form-group">
             <label>Stock</label>
-            <input
+            <input className='no-spinner'
               type="number"
               name="stock"
               value={formData.stock}
@@ -143,9 +190,16 @@ const AddProduct = () => {
               placeholder="Enter stock quantity (default: 0)"
             />
           </div>
+
+
+
+
+
+
+
           <div className="form-group">
             <label>Image Upload</label>
-            <input type="file" onChange={handleImageUpload} multiple />
+            <input className='no-spinner' type="file" onChange={handleImageUpload} multiple />
             {loading && <p>Uploading images...</p>}
             {formData.images.length > 0 && (
               <div className="image-previews">
@@ -160,6 +214,13 @@ const AddProduct = () => {
               </div>
             )}
           </div>
+
+
+
+
+
+
+
           <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "Adding..." : "Add Product"}
           </button>

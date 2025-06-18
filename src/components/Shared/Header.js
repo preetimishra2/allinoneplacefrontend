@@ -13,7 +13,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // state for menu toggle
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("")
-    const { setSearchProduct, isMobile } = useContext(AppContext)
+    const {isMobile, listOfAllProducts, setCurrentlyShowingProducts } = useContext(AppContext)
 
     useEffect(() => {
         const token = localStorage.getItem('authToken');
@@ -31,11 +31,20 @@ const Header = () => {
 
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setSearchProduct(searchInput)
+        let timer;
+        if (searchInput) {
+            timer = setTimeout(() => {
+            const filteredProducts = listOfAllProducts.filter(product =>
+                product.name.toLowerCase().includes(searchInput.toLowerCase())
+            );
+            console.log("header")
+            setCurrentlyShowingProducts(filteredProducts)
         }, 300);
+
+        }
+
         return () => clearTimeout(timer);
-    }, [searchInput, setSearchProduct])
+    }, [searchInput])
 
     const handleLogout = () => {
         localStorage.clear();
@@ -65,7 +74,7 @@ const Header = () => {
             <input
                 type="text"
                 className={isMenuOpen ? 'search-input-hidden' : 'search-input'}
-                placeholder="Search products..."
+                placeholder="Search product names..."
                 value={searchInput}
                 onChange={e => setSearchInput(e.target.value)}
             />

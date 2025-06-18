@@ -11,6 +11,8 @@ import UserDashboard from "./components/User/UserDashboard";
 import Cart from "./components/User/Cart";
 import Checkout from "./components/User/Checkout";
 import {ContextProvider} from './ContextProvider';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
@@ -29,6 +31,7 @@ function App() {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/checkout" element={<Checkout />} />
                 </Routes>
+                <ToastContainer position="top-right" autoClose={3000} />
             </Router>
         </ContextProvider>
     );

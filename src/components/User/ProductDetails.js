@@ -8,6 +8,7 @@ import Footer from "../Shared/Footer";
 import { Carousel } from "react-responsive-carousel"; // Carousel library
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
 import { API_BASE_URL } from "../../config";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -48,7 +49,7 @@ const ProductDetails = () => {
     }
 
     Cookies.set("cart", JSON.stringify(cart), { expires: 7 });
-    alert("Product added to cart!");
+    toast.success("Product added to cart!");
   };
 
   if (!product) {

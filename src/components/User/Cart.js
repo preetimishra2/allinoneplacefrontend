@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Footer from "../Shared/Footer";
 import Header from "../Shared/Header";
 
@@ -27,7 +28,7 @@ const Cart = () => {
 
     const handleCheckout = () => {
         if (cart.length === 0) {
-            alert("Your cart is empty!");
+            toast.success("Your cart is empty!");
             return;
         }
         navigate("/checkout");
