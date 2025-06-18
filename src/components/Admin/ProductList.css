@@ -43,6 +43,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    /* cursor: not-allowed; */
     font-weight: bold;
 }
 
@@ -58,4 +59,16 @@
 
 .product-list button:hover {
     opacity: 0.9;
+}
+
+.under-dev-tooltip {
+      position: fixed;
+  background: rgba(53, 53, 53, 0.22);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
 }

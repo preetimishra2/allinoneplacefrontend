@@ -1,0 +1,23 @@
+/* .categories-panel-for-homepage-container {
+    display: flex;
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+    justify-content: space-around;
+}
+
+.category-view {
+    justify-content: space-around;
+    display: inline-block;
+    padding: 8px;
+    vertical-align: center;
+    text-align: center;
+    font-style: bold;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.category-view:hover {
+    transition: 0.3s;
+    background-color: #eee;
+    border-radius: 10px 10px 0px 0px;
+} */

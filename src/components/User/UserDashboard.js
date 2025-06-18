@@ -3,6 +3,8 @@ import "./UserDashboard.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 import { API_BASE_URL } from "../../config"; 
 
 const UserDashboard = () => {
@@ -30,7 +32,7 @@ const UserDashboard = () => {
         }
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
-        alert("Failed to fetch dashboard data.");
+        toast.error("Failed to fetch dashboard data.");
       }
     };
 

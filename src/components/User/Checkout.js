@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Checkout.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { API_BASE_URL } from "../../config"; 
 
@@ -23,7 +24,7 @@ const Checkout = () => {
     const fetchUserData = async () => {
       const token = localStorage.getItem("authToken");
       if (!token) {
-        alert("Please log in to proceed.");
+        toast.info("Please log in to proceed.");
         return;
       }
 
@@ -37,7 +38,7 @@ const Checkout = () => {
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
-        alert("Failed to fetch user data.");
+        toast.error("Failed to fetch user data.");
       }
     };
 
@@ -55,7 +56,7 @@ const Checkout = () => {
       const response = await axios.post(`${API_BASE_URL}/api/users/add-address`, newAddress, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      alert("Address added successfully!");
+      toast.success("Address added successfully!");
       setUser(response.data);
       setSelectedAddress(newAddress);
       setNewAddress({
@@ -67,7 +68,7 @@ const Checkout = () => {
       });
     } catch (error) {
       console.error("Error adding address:", error);
-      alert("Failed to add address.");
+      toast.error("Failed to add address.");
     } finally {
       setLoading(false);
     }
@@ -76,7 +77,7 @@ const Checkout = () => {
   const handleCheckout = async () => {
     const token = localStorage.getItem("authToken");
     if (!selectedAddress) {
-      alert("Please select or add an address to proceed.");
+      toast.info("Please select or add an address to proceed.");
       return;
     }
 
@@ -91,10 +92,10 @@ const Checkout = () => {
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      alert("Order placed successfully!");
+      toast.success("Order placed successfully!");
     } catch (error) {
       console.error("Error during checkout:", error);
-      alert("Failed to place the order.");
+      toast.error("Failed to place the order.");
     }
   };
 

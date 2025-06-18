@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./ProductList.css";
 import Header from "../Shared/Header";
 import Footer from "../Shared/Footer";
-import { API_BASE_URL } from "../../config"; 
+import { API_BASE_URL } from "../../config";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -18,6 +18,24 @@ const ProductList = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
+  // const handleMouseMove = (e) => {
+  //   setTimeout(() => {
+  //     setTooltip({
+  //       visible: true,
+  //       x: e.clientX,
+  //       y: e.clientY,
+  //     });
+
+  //   }, 1000);
+
+  //   console.log("move", tooltip)
+  // };
+
+  // const handleMouseLeave = () => {
+  //   console.log(tooltip)
+  //   setTooltip((prev) => ({ ...prev, visible: false }));
+  // };
+
   const deleteProduct = (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       axios
@@ -29,6 +47,14 @@ const ProductList = () => {
     }
   };
 
+  // let underDev = <div
+  //   className="under-dev-tooltip"
+  //   style={{
+  //     top: tooltip.y + 24,
+  //     left: tooltip.x + 12,
+  //   }}
+  // >Under Development </div>
+
   return (
     <React.Fragment>
       <Header />
@@ -39,6 +65,7 @@ const ProductList = () => {
               <th>Name</th>
               <th>Price</th>
               <th>Category</th>
+              <th>Sub Category</th>
               <th>Stock</th>
               <th>Actions</th>
             </tr>
@@ -49,21 +76,23 @@ const ProductList = () => {
                 <td>{product.name}</td>
                 <td>₹{product.price.toFixed(2)}</td>
                 <td>{product.category}</td>
+                <td>{product.subcategory ? product.subcategory : "none"}</td>
                 <td>{product.stock}</td>
                 <td>
-                  <button
-                    onClick={() =>
-                      navigate(`/admin/edit-product/${product._id}`)
-                    }
-                  >
-                    Edit
-                  </button>
+                    <button
+                      onClick={() =>
+                        navigate(`/admin/edit-product/${product._id}`)}
+                      // disabled
+                    >
+                      Edit
+                    </button>
                   <button
                     onClick={() => deleteProduct(product._id)}
                     className="delete-button"
                   >
                     Delete
                   </button>
+                  {/* {tooltip.visible && underDev} */}
                 </td>
               </tr>
             ))}
