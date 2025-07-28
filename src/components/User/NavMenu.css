@@ -92,3 +92,10 @@
 .nested-item:hover {
   background: #ddd;
 }
+
+@media (max-width: 780px) {
+  .nav-container {
+    display: none;
+  }
+  
+}
